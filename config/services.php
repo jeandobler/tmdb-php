@@ -33,6 +33,10 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
+    'tmdb' => [
+        'key' => env('TMDB_KEY'),
+        'url' => env('TMDB_URL'),
+    ],
 
     'stripe' => [
         'model' => App\User::class,

@@ -1,5 +1,7 @@
 <?php
 
+use Prettus\Repository\Providers\RepositoryServiceProvider;
+
 return [
 
     /*
@@ -165,13 +167,13 @@ return [
         /*
          * Package Service Providers...
          */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
