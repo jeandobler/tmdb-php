@@ -7,19 +7,46 @@
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
     },
-    "devDependencies": {
-        "axios": "^0.18",
-        "bootstrap": "^4.0.0",
+    "dependencies": {
+        "@material-ui/core": "^3.9.2",
+        "axios": "^0.18.0",
+        "babel-loader": "^8.0.5",
+        "bootstrap": "^4.3.1",
+        "compass": "^0.1.1",
+        "compass-mixins": "^0.12.10",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
-        "lodash": "^4.17.5",
+        "node-sass": "^4.11.0",
         "popper.js": "^1.12",
-        "resolve-url-loader": "^2.3.1",
+        "react": "^16.8.4",
+        "react-bootstrap": "^1.0.0-beta.6",
+        "react-dom": "^16.8.4",
+        "react-form": "^3.5.7",
+        "react-redux": "^6.0.1",
+        "react-router-dom": "^5.0.0",
+        "react-scripts": "2.1.8",
+        "redux-logger": "^3.0.6",
+        "redux-router": "^2.1.2",
+        "redux-saga": "^1.0.2",
         "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "vue": "^2.5.17"
+        "sass-loader": "^7.1.0"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "devDependencies": {
+        "webpack-cli": "^3.3.2"
     }
 }

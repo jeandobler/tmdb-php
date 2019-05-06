@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
                 }
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
         }
     }
 }
