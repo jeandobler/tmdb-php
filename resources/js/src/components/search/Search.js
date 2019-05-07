@@ -28,6 +28,10 @@ class Search extends Component {
         e.preventDefault()
     };
 
+    componentDidMount() {
+        this.props.trySearch(this.state.form)
+    }
+
     componentDidUpdate(prevProps) {
 
         if (this.props.json !== prevProps.json) {
@@ -61,7 +65,7 @@ class Search extends Component {
 
                 </Form.Group>
 
- 
+
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
@@ -75,12 +79,8 @@ class Search extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
     return {
         errors: state.errors,
-        response: state.response,
-        json: state.json,
-
     };
 };
 

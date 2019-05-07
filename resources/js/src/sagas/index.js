@@ -5,12 +5,10 @@ import env from "../config/env";
 
 function* fetchMovies(data) {
     let errors = null
-    let json = yield axios.get(env.ROOT_API + `movies`, data.form)
+    let json = yield axios.get(env.ROOT_API + `movies`,{params: data.form} )
         .then(response => response.data.data)
         .catch(
             response => {
-
-
                 errors = response.response.data.errors
                 return {api_token: null}
             }
