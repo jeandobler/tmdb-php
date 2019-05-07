@@ -22,17 +22,19 @@ const styles = {
 class Movie extends Component {
 
 
+
+
     render() {
 
         function goToDetails(prop) {
-            return <Redirect to='/details' props={prop}/>
+            return
         }
+
+
 
         let {title, overview, small_overview, poster_path, backdrop_path, release_date_label} = this.props.json;
         return (
-            <Card className={this.props.card} onClick={() => {
-                return goToDetails(this.props.json)
-            }}>
+            <Card className={this.props.card}>
                 <CardActionArea>
                     <CardMedia
                         style={{height: 300, width: "100%",}}

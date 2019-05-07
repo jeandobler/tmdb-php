@@ -6,6 +6,7 @@ import Loading from "../../components/loading/Loading";
 import Search from "../../components/search/Search";
 import Movie from "../../components/movie/Movie";
 import Grid from "@material-ui/core/Grid";
+import {Redirect} from "react-router-dom";
 
 class ListMovies extends Component {
 
@@ -13,11 +14,16 @@ class ListMovies extends Component {
         super(props);
         this.state = {
             json: null,
-            error: false
+            error: false,
+            redirect: null,
         }
     }
 
     render() {
+
+        if (this.state.redirect) {
+            return (<Redirect to={'/details/' + this.state.redirect.id} props={this.state.redirect}/>)
+        }
 
         var returner =
 
@@ -27,7 +33,8 @@ class ListMovies extends Component {
                 <Grid container spacing={16}>
                     {
                         this.props.json && this.props.json.map(item => {
-                            return <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}> <Movie json={item}/>
+                            return <Grid item xs={12} sm={6} md={4} lg={3}
+                                         onClick={() => { this.setState({redirect: item}) }} key={item.id}> <Movie json={item}/>
                             </Grid>;
                         })
                     }

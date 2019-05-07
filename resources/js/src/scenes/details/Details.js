@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import logo from '../../assets/logo.svg';
 import './index.css';
 import {connect} from "react-redux";
 import Loading from "../../components/loading/Loading";
@@ -10,22 +9,41 @@ class Details extends Component {
         super(props);
     }
 
+    componentDidMount() {
+
+        this.props.trySearch(this.props.match.params.id)
+    }
+
     render() {
 
         var returner =
             <div className="App">
-               <Movie json={this.props}/>
+                <Loading/>
+                {this.props.json && (
+                    <Movie json={this.props.json}/>
+                )}
+
+
             </div>;
         return <div>{returner}</div>
     }
 }
 
-const mapStateToProps = (state, p) => {
+const mapStateToProps = state => {
 
     return {
-        response: state.response,
+        errors: state.errors,
+        json: state.json,
+
     };
 };
 
 
-export default connect(mapStateToProps, null)(Details);
+const mapDispachToProps = dispatch => {
+    return {
+        trySearch: (id) => dispatch({type: "FIND_MOVIE", id: id}),
+    };
+};
+
+
+export default connect(mapStateToProps, mapDispachToProps)(Details);

@@ -31,7 +31,7 @@ function* fetchMovie(id) {
                 return {api_token: null}
             }
         );
-    yield put({type: "MOVIES_FOUND", json: json, errors: errors});
+    yield put({type: "MOVIES_FOUND", json: json, errors: errors, loading: false});
 }
 
 

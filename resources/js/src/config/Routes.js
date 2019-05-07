@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ListMovies from "../scenes/list/ListMovies";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import Details from "../scenes/details/Details";
 
 class Routes extends Component {
     render() {
@@ -21,7 +22,7 @@ class Routes extends Component {
                     >
                         <Switch>
                             <Route path="/" component={ListMovies} exact/>
-                            <Route path="/details" component={ListMovies} exact/>
+                            <Route path="/details/:id" component={Details} exact/>
                             <Route component={Error}/>
                         </Switch>
                     </CSSTransition>

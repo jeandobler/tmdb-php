@@ -35,7 +35,6 @@ class Search extends Component {
     };
 
     componentDidMount() {
-        console.log(1)
         this.props.trySearch(this.state.form)
     }
 
@@ -84,19 +83,6 @@ class Search extends Component {
                 </Paper>
                 </Grid>
 
-                {/*<Form.Group controlId="formBasicquery">*/}
-                {/*    <Form.Control type="query" placeholder="Enter query" required*/}
-                {/*                  name="query"*/}
-                {/*                  field="query"*/}
-                {/*                  label="Username / query"*/}
-                {/*                  value={this.state.form.query}*/}
-                {/*        // error={errors.query}*/}
-                {/*                  onChange={this.handleChange}/>*/}
-
-                {/*    <Button variant="primary" type="submit">*/}
-                {/*        Search*/}
-                {/*    </Button>*/}
-                {/*</Form.Group>*/}
                 <FormErrors/>
             </Form>
 
