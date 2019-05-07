@@ -2,11 +2,19 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import './index.css';
 import FormErrors from "../error/FormErrors";
-import {Button, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
+import InputBase from "@material-ui/core/InputBase";
+import IconButton from "@material-ui/core/IconButton";
+import Divider from "@material-ui/core/Divider";
 
-// import {Form} from 'react-form';
+import Paper from '@material-ui/core/Paper';
+import SearchIcon from '@material-ui/icons/Search';
+import Grid from "@material-ui/core/Grid";
 
 class Search extends Component {
+
+
+    state = {loading: this.props.loading};
 
     constructor(props) {
         super(props);
@@ -15,13 +23,11 @@ class Search extends Component {
                 query: '',
             },
             errors: {},
-            isLoading: false,
             json: null
         };
 
         this.handleChange = this.handleChange.bind(this);
     }
-
 
     onSubmit = (e) => {
         this.props.trySearch(this.state.form);
@@ -29,15 +35,10 @@ class Search extends Component {
     };
 
     componentDidMount() {
+        console.log(1)
         this.props.trySearch(this.state.form)
     }
 
-    componentDidUpdate(prevProps) {
-
-        if (this.props.json !== prevProps.json) {
-            // this.props.navigation.navigate('/')
-        }
-    }
 
     handleChange(e, data) {
         let field = e.currentTarget.name;
@@ -54,24 +55,49 @@ class Search extends Component {
 
         return (
             <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formBasicquery">
-                    <Form.Control type="query" placeholder="Enter query" required
-                                  name="query"
-                                  field="query"
-                                  label="Username / query"
-                                  value={this.state.form.query}
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                <Paper  style={{
+                    padding: '2 4',
+                    marginBottom: 16,
+                    display: 'flex',
+                    alignItems: 'center',
+
+                }} elevation={1}>
+
+                    <InputBase type="query" placeholder="Enter query" required
+                               name="query"
+                               field="query"
+                               label="Username / query"
+                               value={this.state.form.query}
+                               style={{width: "98%", padding:4}}
                         // error={errors.query}
-                                  onChange={this.handleChange}/>
+                               onChange={this.handleChange}/>
 
-                </Form.Group>
+                    <Divider style={{
+                        width: 1,
+                        height: 28,
+                        margin: 4,
+                    }}/>
+                    <IconButton color="primary" type="submit" style={{padding: 10,}} aria-label="Directions">
+                        <SearchIcon/>
+                    </IconButton>
+                </Paper>
+                </Grid>
 
+                {/*<Form.Group controlId="formBasicquery">*/}
+                {/*    <Form.Control type="query" placeholder="Enter query" required*/}
+                {/*                  name="query"*/}
+                {/*                  field="query"*/}
+                {/*                  label="Username / query"*/}
+                {/*                  value={this.state.form.query}*/}
+                {/*        // error={errors.query}*/}
+                {/*                  onChange={this.handleChange}/>*/}
 
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-
+                {/*    <Button variant="primary" type="submit">*/}
+                {/*        Search*/}
+                {/*    </Button>*/}
+                {/*</Form.Group>*/}
                 <FormErrors/>
-
             </Form>
 
         );
@@ -79,15 +105,16 @@ class Search extends Component {
 }
 
 const mapStateToProps = state => {
+
     return {
-        errors: state.errors,
+        errors: state.errors
     };
 };
 
 
 const mapDispachToProps = dispatch => {
     return {
-        trySearch: (form) => dispatch({type: "SEARCH_MOVIE", form: form}),
+        trySearch: (form) => dispatch({type: "SEARCH_MOVIES", form: form}),
     };
 };
 

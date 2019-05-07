@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './index.css';
 
-import { withStyles } from '@material-ui/core/styles';
 import {connect} from "react-redux";
 import Loading from "../../components/loading/Loading";
 import Search from "../../components/search/Search";
@@ -18,34 +17,23 @@ class ListMovies extends Component {
         }
     }
 
-    static getDerivedStateFromProps(props, state) {
-
-        if (props.json && props.json.length > 0) {
-            state.json = props.json;
-        }
-        return state;
-    }
-
-
     render() {
-
 
         var returner =
 
-
-            <div className="App">
-
+            <div className="App" style={{padding: 16}}>
                 <Loading/>
                 <Search/>
-                <Grid container spacing={24}>
+                <Grid container spacing={16}>
                     {
-                        this.state.json && this.state.json.map(item => {
-                            return <Grid item sm> <Movie json={item}/> </Grid>;
+                        this.props.json && this.props.json.map(item => {
+                            return <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}> <Movie json={item}/>
+                            </Grid>;
                         })
                     }
                 </Grid>
-
             </div>;
+
         return <div>{returner}</div>
     }
 }
@@ -54,24 +42,10 @@ const mapStateToProps = state => {
 
     return {
         json: state.json,
+        loading: state.loading,
 
     };
 };
 
-const styles = theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-        width: 500,
-        height: 450,
-    },
-});
 
-
-export default withStyles(styles)
-connect(mapStateToProps, null)(ListMovies);
+export default connect(mapStateToProps, null)(ListMovies);

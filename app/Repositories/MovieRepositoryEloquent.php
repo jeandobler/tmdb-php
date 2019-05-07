@@ -42,7 +42,7 @@ class MovieRepositoryEloquent extends BaseRepository implements MovieRepository
     public function getPaged($array)
     {
         $this->sycnToDatabase($array);
-        return $this->paginate(Arr::get($array, 'limit'));
+        return $this->paginate(Arr::get($array, 'limit'. 20));
     }
 
 
@@ -74,7 +74,7 @@ class MovieRepositoryEloquent extends BaseRepository implements MovieRepository
                 }
             }
         } catch (\Exception $e) {
-            dd($e->getMessage());
+//            dd($e->getMessage());
         }
     }
 

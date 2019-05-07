@@ -28,10 +28,12 @@ class MovieTransformer extends TransformerAbstract
             'id' => (int)$model->id,
             'title' => $model->title,
             'overview' => $model->overview,
+            'small_overview' => substr($model->overview, 0, 200) . "... ",
             'poster_path' => self::IMAGE_URL . $model->poster_path,
             'backdrop_path' => self::IMAGE_URL . $model->backdrop_path,
-            'release_date' => $model->created_at,
-            'genres' =>$model->genres()->select('name')->get(),
+            'release_date' => $model->release_date,
+            'release_date_label' => $model->release_date ? $model->release_date->format("d/m/Y") : null,
+            'genres' => $model->genres()->select('name')->get(),
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

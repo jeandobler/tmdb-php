@@ -31,12 +31,12 @@ function* fetchMovie(id) {
                 return {api_token: null}
             }
         );
-    yield put({type: "LOGIN_RECEIVED", json: json, errors: errors});
+    yield put({type: "MOVIES_FOUND", json: json, errors: errors});
 }
 
 
 function* actionWatcher() {
-    yield takeLatest('SEARCH_MOVIE', fetchMovies)
+    yield takeLatest('SEARCH_MOVIES', fetchMovies)
     yield takeLatest('FIND_MOVIE', fetchMovie)
 }
 

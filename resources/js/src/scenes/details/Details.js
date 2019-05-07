@@ -8,18 +8,13 @@ class Details extends Component {
 
     constructor(props) {
         super(props);
-        localStorage.clear();
     }
 
     render() {
 
         var returner =
             <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <Loading/>
-                    {/*<LoginForm/>*/}
-                </div>
+               <Movie json={this.props}/>
             </div>;
         return <div>{returner}</div>
     }

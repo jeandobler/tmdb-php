@@ -76,7 +76,7 @@ abstract class Core
             return $this->getResponse($this->client->request($type, $this->api_url . $url, $this->options));
 
         } catch (RequestException  $e) {
-            $this->getResponse($e->getResponse());
+//            $this->getResponse($e->getResponse());
             throw $e;
         } catch (GuzzleException $e) {
             throw $e;
