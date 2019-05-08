@@ -14,14 +14,14 @@ import Grid from "@material-ui/core/Grid";
 class Search extends Component {
 
 
-    state = {loading: this.props.loading};
-
     constructor(props) {
         super(props);
         this.state = {
             form: {
                 query: '',
+                page: 1
             },
+            loading: this.props.loading,
             errors: {},
             json: null
         };
@@ -44,7 +44,7 @@ class Search extends Component {
         let form = {
             form: {
                 ...this.state.form,
-                [field]: e.currentTarget.value
+                [field]: e.currentTarget.value,
             }
         };
         this.setState(form);
@@ -55,32 +55,32 @@ class Search extends Component {
         return (
             <Form onSubmit={this.onSubmit}>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                <Paper  style={{
-                    padding: '2 4',
-                    marginBottom: 16,
-                    display: 'flex',
-                    alignItems: 'center',
+                    <Paper style={{
+                        padding: '2 4',
+                        marginBottom: 16,
+                        display: 'flex',
+                        alignItems: 'center',
 
-                }} elevation={1}>
+                    }} elevation={1}>
 
-                    <InputBase type="query" placeholder="Enter query" required
-                               name="query"
-                               field="query"
-                               label="Username / query"
-                               value={this.state.form.query}
-                               style={{width: "98%", padding:4}}
-                        // error={errors.query}
-                               onChange={this.handleChange}/>
+                        <InputBase type="query" placeholder="Enter query"
+                                   name="query"
+                                   field="query"
+                                   label="Username / query"
+                                   value={this.state.form.query}
+                                   style={{width: "98%", padding: 4}}
+                            // error={errors.query}
+                                   onChange={this.handleChange}/>
 
-                    <Divider style={{
-                        width: 1,
-                        height: 28,
-                        margin: 4,
-                    }}/>
-                    <IconButton color="primary" type="submit" style={{padding: 10,}} aria-label="Directions">
-                        <SearchIcon/>
-                    </IconButton>
-                </Paper>
+                        <Divider style={{
+                            width: 1,
+                            height: 28,
+                            margin: 4,
+                        }}/>
+                        <IconButton color="primary" type="submit" style={{padding: 10,}} aria-label="Directions">
+                            <SearchIcon/>
+                        </IconButton>
+                    </Paper>
                 </Grid>
 
                 <FormErrors/>

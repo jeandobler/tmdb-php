@@ -2,11 +2,19 @@ import React, {Component} from 'react';
 import './index.css';
 import {connect} from "react-redux";
 import Loading from "../../components/loading/Loading";
+import Movie from "../../components/movie/Movie";
+import Button from "@material-ui/core/Button";
+import {Redirect} from "react-router-dom";
+import MovieDetails from "../../components/movieDetails/MovieDetails";
+
 
 class Details extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            redirect: false
+        }
     }
 
     componentDidMount() {
@@ -16,16 +24,24 @@ class Details extends Component {
 
     render() {
 
-        var returner =
+        if (this.state.redirect) {
+            return (<Redirect to={'/'}/>)
+        }
+
+
+        let returner =
             <div className="App">
                 <Loading/>
                 {this.props.json && (
-                    <Movie json={this.props.json}/>
+                    <MovieDetails json={this.props.json}/>
                 )}
 
 
+                <Button variant="contained" color="primary" style={{alignContent: "center", marginTop: 16}}
+                        onClick={() => { this.setState({redirect: true}) }}>Back</Button>
+
             </div>;
-        return <div>{returner}</div>
+        return <div>{returner}</div>;
     }
 }
 

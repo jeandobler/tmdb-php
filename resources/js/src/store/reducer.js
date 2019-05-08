@@ -8,7 +8,7 @@ const reducer = (state = initialState, action) => {
             return {...state, loading: true};
 
         case "MOVIES_FOUND":
-            return {...state, loading: action.loading, json: action.json, error: action.error,};
+            return {...state, loading: action.loading, json: action.json, error: action.error, page: action.page,};
 
         default:
             return state;

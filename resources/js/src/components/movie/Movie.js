@@ -32,7 +32,7 @@ class Movie extends Component {
 
 
 
-        let {title, overview, small_overview, poster_path, backdrop_path, release_date_label} = this.props.json;
+        let {title, overview, small_overview,   backdrop_path, release_date_label,main_genre} = this.props.json;
         return (
             <Card className={this.props.card}>
                 <CardActionArea>
@@ -47,6 +47,9 @@ class Movie extends Component {
                         </Typography>
                         <Typography component="p">
                             {small_overview}
+                        </Typography>
+                        <Typography component="b" style={{textAlign: "right", marginTop: 8}}>
+                            {main_genre}
                         </Typography>
                         <Typography component="b" style={{textAlign: "right", marginTop: 8}}>
                             {release_date_label}

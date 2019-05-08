@@ -5,7 +5,7 @@ import env from "../config/env";
 
 function* fetchMovies(data) {
     let errors = null
-    let json = yield axios.get(env.ROOT_API + `movies`,{params: data.form} )
+    let json = yield axios.get(env.ROOT_API + `movies`, {params: data.form})
         .then(response => response.data.data)
         .catch(
             response => {
@@ -13,15 +13,13 @@ function* fetchMovies(data) {
                 return {api_token: null}
             }
         );
-
-
-    yield put({type: "MOVIES_FOUND", json: json, errors: errors, loading: false});
+    yield put({type: "MOVIES_FOUND", json: json, errors: errors, loading: false, page: data.form.page});
 }
 
 
-function* fetchMovie(id) {
+function* fetchMovie(data) {
     let errors = null
-    let json = yield axios.get(env.ROOT_API + `movies/` + id)
+    let json = yield axios.get(env.ROOT_API + `movies/` + data.id)
         .then(response => response.data.data)
         .catch(
             response => {

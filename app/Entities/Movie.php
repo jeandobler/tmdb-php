@@ -30,7 +30,6 @@ class Movie extends Model implements Transformable
         'release_date',
     ];
 
-    protected $dates = ['release_date'];
 
     protected $casts = [
         'tmdb_id' => 'integer',
