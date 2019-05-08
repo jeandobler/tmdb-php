@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import './index.css';
 import {connect} from "react-redux";
 import Loading from "../../components/loading/Loading";
-import Movie from "../../components/movie/Movie";
 import Button from "@material-ui/core/Button";
 import {Redirect} from "react-router-dom";
 import MovieDetails from "../../components/movieDetails/MovieDetails";
@@ -36,9 +34,10 @@ class Details extends Component {
                     <MovieDetails json={this.props.json}/>
                 )}
 
-
                 <Button variant="contained" color="primary" style={{alignContent: "center", marginTop: 16}}
-                        onClick={() => { this.setState({redirect: true}) }}>Back</Button>
+                        onClick={() => {
+                            this.setState({redirect: true})
+                        }}>Back</Button>
 
             </div>;
         return <div>{returner}</div>;

@@ -1,28 +1,10 @@
 import React, {Component} from 'react';
-import './index.css';
-import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Container from "react-bootstrap/Container";
 
-
-const styles = theme => ({
-    card: {
-        display: 'flex',
-    },
-    details: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    content: {
-        flex: '1 0 auto',
-    },
-    cover: {
-        width: 151,
-    },
-});
 
 class MovieDetails extends Component {
 
@@ -37,7 +19,8 @@ class MovieDetails extends Component {
                         style={{
                             flexDirection: 'column',
                             width: '100%',
-                            height:  500  }}
+                            height: 500
+                        }}
                         image={poster_path}
                         title={title}
                     />
@@ -71,4 +54,4 @@ class MovieDetails extends Component {
     }
 }
 
-export default withStyles(styles)(MovieDetails);
+export default MovieDetails;

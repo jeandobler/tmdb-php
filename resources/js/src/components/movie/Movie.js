@@ -1,38 +1,17 @@
 import React, {Component} from 'react';
-import './index.css';
-import {withStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import {Redirect} from "react-router-dom";
 
-
-const styles = {
-    card: {
-        maxWidth: 345,
-    },
-    media: {
-        height: 140,
-        width: "100%",
-    },
-};
 
 class Movie extends Component {
 
-
-
-
     render() {
 
-        function goToDetails(prop) {
-            return
-        }
 
-
-
-        let {title, overview, small_overview,   backdrop_path, release_date_label,main_genre} = this.props.json;
+        let {title, overview, small_overview, backdrop_path, release_date_label, main_genre} = this.props.json;
         return (
             <Card className={this.props.card}>
                 <CardActionArea>
@@ -64,5 +43,4 @@ class Movie extends Component {
     }
 }
 
-
-export default withStyles(styles)(Movie);
+export default Movie;
