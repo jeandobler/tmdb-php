@@ -1,5 +1,5 @@
 export default {
     NODE_ENV: 'production',
-    ROOT_API: 'http://quiet-fortress-17131.herokuapp.com/api/',
+    ROOT_API: 'http://arsene.herokuapp.com/api/',
     APIKEY: ''
 }
